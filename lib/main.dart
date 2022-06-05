@@ -35,7 +35,7 @@ class InitialPage extends StatelessWidget {
                 onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context) => const BasicTodoPage())),//firebaseを使わない方のtodoリスト
                 child: const Text("ベーシック")
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
                 onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context) => const FromFirebaseTodoPage())),//firebaseを使う方のtodoリスト
                 child: const Text("from Firebase")
