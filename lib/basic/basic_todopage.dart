@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class BasicTodoPage extends StatelessWidget {
-  const BasicTodoPage({Key? key}) : super(key: key);
+
+  TextEditingController addTodoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class BasicTodoPage extends StatelessWidget {
                 children: [
                   Flexible(
                     child: TextField(
+                      controller: addTodoController,
                     ),
                   ),
                   ElevatedButton(

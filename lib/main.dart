@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: InitialPage(),
+      home: const InitialPage(),
     );
   }
 }
@@ -32,12 +32,12 @@ class InitialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context) => const BasicTodoPage())),//firebaseを使わない方のtodoリスト
+                onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context) => BasicTodoPage())),//firebaseを使わない方のtodoリスト
                 child: const Text("ベーシック")
             ),
             const SizedBox(height: 40),
             ElevatedButton(
-                onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context) => const FromFirebaseTodoPage())),//firebaseを使う方のtodoリスト
+                onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context) => FromFirebaseTodoPage())),//firebaseを使う方のtodoリスト
                 child: const Text("from Firebase")
             ),
           ],
