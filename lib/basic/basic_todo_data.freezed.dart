@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Todo {
-  String get todoId => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
@@ -30,7 +30,7 @@ abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res>;
   $Res call(
-      {String todoId, String title, bool isCompleted, DateTime createdAt});
+      {String id, String description, bool isCompleted, DateTime createdAt});
 }
 
 /// @nodoc
@@ -43,19 +43,19 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? todoId = freezed,
-    Object? title = freezed,
+    Object? id = freezed,
+    Object? description = freezed,
     Object? isCompleted = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      todoId: todoId == freezed
-          ? _value.todoId
-          : todoId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       isCompleted: isCompleted == freezed
           ? _value.isCompleted
@@ -75,7 +75,7 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       __$$_TodoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String todoId, String title, bool isCompleted, DateTime createdAt});
+      {String id, String description, bool isCompleted, DateTime createdAt});
 }
 
 /// @nodoc
@@ -89,19 +89,19 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? todoId = freezed,
-    Object? title = freezed,
+    Object? id = freezed,
+    Object? description = freezed,
     Object? isCompleted = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_$_Todo(
-      todoId: todoId == freezed
-          ? _value.todoId
-          : todoId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       isCompleted: isCompleted == freezed
           ? _value.isCompleted
@@ -119,15 +119,15 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
 
 class _$_Todo with DiagnosticableTreeMixin implements _Todo {
   const _$_Todo(
-      {required this.todoId,
-      required this.title,
+      {required this.id,
+      required this.description,
       this.isCompleted = false,
       required this.createdAt});
 
   @override
-  final String todoId;
+  final String id;
   @override
-  final String title;
+  final String description;
   @override
   @JsonKey()
   final bool isCompleted;
@@ -136,7 +136,7 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Todo(todoId: $todoId, title: $title, isCompleted: $isCompleted, createdAt: $createdAt)';
+    return 'Todo(id: $id, description: $description, isCompleted: $isCompleted, createdAt: $createdAt)';
   }
 
   @override
@@ -144,8 +144,8 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Todo'))
-      ..add(DiagnosticsProperty('todoId', todoId))
-      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('isCompleted', isCompleted))
       ..add(DiagnosticsProperty('createdAt', createdAt));
   }
@@ -155,8 +155,9 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Todo &&
-            const DeepCollectionEquality().equals(other.todoId, todoId) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.isCompleted, isCompleted) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
@@ -165,8 +166,8 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(todoId),
-      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(isCompleted),
       const DeepCollectionEquality().hash(createdAt));
 
@@ -178,15 +179,15 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
 
 abstract class _Todo implements Todo {
   const factory _Todo(
-      {required final String todoId,
-      required final String title,
+      {required final String id,
+      required final String description,
       final bool isCompleted,
       required final DateTime createdAt}) = _$_Todo;
 
   @override
-  String get todoId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   bool get isCompleted => throw _privateConstructorUsedError;
   @override
