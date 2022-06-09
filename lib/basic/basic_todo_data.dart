@@ -18,8 +18,8 @@ class Todo with _$Todo{
   }) = _Todo;
 }
 
-class TodoList extends StateNotifier<List<Todo>> {
-  TodoList(): super([]);//初期化
+class TodosNotifier extends StateNotifier<List<Todo>> {
+  TodosNotifier(): super([]);//初期化
 
   void add(String description) {
     state = [
