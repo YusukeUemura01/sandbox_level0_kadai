@@ -27,28 +27,23 @@ class FromFirebaseTodoNotifier extends StateNotifier<List<FromFirebaseTodo>>{
   final CollectionReference todosCollection = FirebaseFirestore.instance.collection("todos");
 
   Future<void> addTodo(String description)async{
-
-    var newTodo = FromFirebaseTodo(
+    final newTodo = FromFirebaseTodo(
       id: _uuid.v4(),
       description: description,
       createdAt: DateTime.now(),
     );
-    var newTodoJson = newTodo.toJson();
-    try{
-      await todosCollection.doc(newTodo.id).set(newTodoJson);//firestoreに保存
-    }on FirebaseException catch (e){
-      print(e);
-    }
     state = [
       ...state,newTodo
     ];
+    final newTodoJson = newTodo.toJson();
+    await todosCollection.doc(newTodo.id).set(newTodoJson);//firestoreに保存
   }
 
   Future<void> getTodoFromFirestore()async{//最初にFirestoreからTodoListをとってくる
     List<FromFirebaseTodo> todoList = [];
     try{
-      var querySnapshot = await todosCollection.get();
-      for (var doc in querySnapshot.docs) {
+      final querySnapshot = await todosCollection.orderBy("createdAt").get();
+      for (final doc in querySnapshot.docs) {
         Map<String, dynamic> todoDataJson = doc.data() as Map<String, dynamic>;
         todoList.add(FromFirebaseTodo.fromJson(todoDataJson));
       }
@@ -59,12 +54,12 @@ class FromFirebaseTodoNotifier extends StateNotifier<List<FromFirebaseTodo>>{
   }
 
   Future<void> deleteTodo(String id) async {
+    state = state.where((todo) => todo.id != id).toList();
     try{
       await todosCollection.doc(id).delete();
     }on FirebaseException catch (e){
       print(e);
     }
-    state = state.where((todo) => todo.id != id).toList();
   }
 
   Future <void> editTodo(FromFirebaseTodo targetTodo,String description)async{
@@ -72,7 +67,7 @@ class FromFirebaseTodoNotifier extends StateNotifier<List<FromFirebaseTodo>>{
     try{
       await todosCollection.doc(editTodo.id).update(editTodo.toJson());
     }on FirebaseException catch (e){
-        print(e);
+      print(e);
     }
     state = [
       for (final todo in state)
