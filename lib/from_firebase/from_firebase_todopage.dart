@@ -27,7 +27,7 @@ class FromFirebaseTodoPage extends HookConsumerWidget {
     useEffect(() {
       ref.read(fromFirebaseTodoProvider.notifier).getTodoFromFirestore();
       return null;
-    });
+    },const[]);//修正点
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -46,9 +46,9 @@ class FromFirebaseTodoPage extends HookConsumerWidget {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async{
                           try{
-                            ref.read(fromFirebaseTodoProvider.notifier).addTodo(addTodoController.text);//Todoを追加
+                            await ref.read(fromFirebaseTodoProvider.notifier).addTodo(addTodoController.text);//修正点
                             addTodoController.clear();
                           }on FirebaseException catch (e){
                               print(e);
